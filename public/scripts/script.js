@@ -15,7 +15,7 @@ const startButton = document.getElementById('start-button'),
 
 const start = function() {
   setTime = Date.now();
-  interval = setInterval(update, 100);
+  interval = setInterval(update, 10);
 }
 
 const pause = function() {
@@ -42,7 +42,16 @@ const update = function() {
 }
 
 const updateScreen = function() {
-  milliseconds.innerText = timer/1000;
+  let timeRaw           = timer/1000,
+      timeMilliseconds  = parseInt((timeRaw % 1) * 100),
+      timeSeconds       = Math.floor(timeRaw),
+      timeMinutes       = Math.floor(timeSeconds/60),
+      timeHours         = Math.floor(timeMinutes/60);
+  
+  milliseconds.innerText = timeMilliseconds;
+  seconds.innerText = timeSeconds;
+  minutes.innerText = timeMinutes;
+  hours.innerText = timeHours;
 }
 
 startButton.addEventListener('click', start);
