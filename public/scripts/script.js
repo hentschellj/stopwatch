@@ -5,7 +5,8 @@ let hours         = document.getElementById('hours'),
     setTime,
     currentTime,
     difference,
-    timer         = 0
+    timer         = 0,
+    interval
 
 const startButton = document.getElementById('start-button'),
       pauseButton = document.getElementById('pause-button'),
@@ -14,11 +15,11 @@ const startButton = document.getElementById('start-button'),
 
 const start = function() {
   setTime = Date.now()
-  setInterval(update, 100)
+  interval = setInterval(update, 100)
 }
 
 const pause = function() {
-  console.log('Pausing')
+  clearInterval(interval)
 }
 
 const stop = function() {
