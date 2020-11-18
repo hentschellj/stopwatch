@@ -28,7 +28,8 @@ const stop = function() {
 }
 
 const reset = function() {
-  console.log('Resetting');
+  timer = 0;
+  updateScreen();
 }
 
 const update = function() {
