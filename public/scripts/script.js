@@ -49,8 +49,8 @@ const updateScreen = function() {
       timeHours         = Math.floor(timeMinutes/60);
   
   milliseconds.innerText = twoDigits(timeMilliseconds);
-  seconds.innerText = twoDigits(timeSeconds);
-  minutes.innerText = twoDigits(timeMinutes);
+  seconds.innerText = twoDigits(checkSixty(timeSeconds));
+  minutes.innerText = twoDigits(checkSixty(timeMinutes));
   hours.innerText = twoDigits(timeHours);
 }
 
@@ -60,6 +60,13 @@ const twoDigits = function(number) {
     return '0' + numString;
   } else {
     return numString;
+  }
+}
+
+const checkSixty = function(number) {
+  let divisible = Math.floor(number / 60);
+  if (number / 60 >= divisible) {
+    return number - 60 * divisible;
   }
 }
 
