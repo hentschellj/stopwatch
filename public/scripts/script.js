@@ -48,10 +48,19 @@ const updateScreen = function() {
       timeMinutes       = Math.floor(timeSeconds/60),
       timeHours         = Math.floor(timeMinutes/60);
   
-  milliseconds.innerText = timeMilliseconds;
-  seconds.innerText = timeSeconds;
-  minutes.innerText = timeMinutes;
-  hours.innerText = timeHours;
+  milliseconds.innerText = twoDigits(timeMilliseconds);
+  seconds.innerText = twoDigits(timeSeconds);
+  minutes.innerText = twoDigits(timeMinutes);
+  hours.innerText = twoDigits(timeHours);
+}
+
+const twoDigits = function(number) {
+  let numString = number.toString();
+  if (numString.length < 2) {
+    return '0' + numString;
+  } else {
+    return numString;
+  }
 }
 
 startButton.addEventListener('click', start);
